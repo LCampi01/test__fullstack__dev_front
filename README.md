@@ -4,12 +4,6 @@
 
 1. [Set up](#setup)
 1. [Structure](#structure)
-1. [Routes](#routes)
-    * App routes [3.1](#routes--app)
-    * Api routes [3.2](#routes--api)
-1. [Dependencies](#dependencies)
-1. [Deployment](#deployment)
-1. [Tests](#tests)
 
 ## Setup
 
