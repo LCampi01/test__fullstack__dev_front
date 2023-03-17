@@ -1,5 +1,3 @@
 export default {
-  FAKE_API_DATA: 'users',
-  FAKE_VALIDATE_SESSION: 'public-api/session',
-  GET_APP_STATUS: 'status'
+  GET_USERS: 'public-api/users',
 };

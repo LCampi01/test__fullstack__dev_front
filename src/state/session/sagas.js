@@ -5,9 +5,16 @@ import {http} from '@services';
 
 import {fetchUsersRequest, fetchUsersSuccess, fetchUsersFailure} from './sessionSlice';
 
-export function* fetchUsers() {
+import isEmpty from 'lodash/isEmpty';
+
+export function* fetchUsers({payload}) {
   try {
-    const users = yield call(http.get, apiRoutes.FAKE_API_DATA);
+    let query = '?';
+    if(!isEmpty(payload)) {
+        const filters = Object.fromEntries(Object.entries(payload).filter(([_, v]) => v != ''));
+        query += new URLSearchParams(filters).toString();
+    }
+    const {users} = yield call(http.get, `${apiRoutes.GET_USERS}${query}`);
     yield put(fetchUsersSuccess({users}));
   } catch (err) {
     yield put(fetchUsersFailure());

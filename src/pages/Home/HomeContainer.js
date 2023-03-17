@@ -2,16 +2,18 @@ import {connect} from 'react-redux';
 
 import {fetchUsersRequest} from '@state/session/sessionSlice';
 
-import {getUsers} from '@state/session/selectors';
+import {getUsers, fetchingUsers, getColumns} from '@state/session/selectors';
 
 import Home from './Home';
 
 const mapStateToProps = props => ({
-  users: getUsers(props)
+  users: getUsers(props),
+  fetchingUsers: fetchingUsers(props),
+  columns: getColumns()
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUsers: () => dispatch(fetchUsersRequest())
+  fetchUsers: (filters = {}) => dispatch(fetchUsersRequest(filters))
 });
 
 const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);

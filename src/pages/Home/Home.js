@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import Container from '@mui/material/Container';
 import UsersTable from '@components/UsersTable';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
+import Filters from '@components/Filters';
 
-function Home({fetchUsers, users}) {
+function Home({fetchUsers, users, columns, fetchingUsers}) {
+  const [filters, setFilters] = useState({name: '', username: '', email: ''});
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -29,14 +32,17 @@ function Home({fetchUsers, users}) {
           </Typography>
         </CardContent>
       </Card>
-      <UsersTable rows={users} />
+      <Filters filters={filters} setFilters={setFilters} search={fetchUsers}/>
+      <UsersTable rows={users} columns={columns} fetchingUsers={fetchingUsers}/>
     </Container>
   );
 }
 
 Home.propTypes = {
   fetchUsers: PropTypes.func.isRequired,
-  users: PropTypes.arrayOf({}).isRequired
+  users: PropTypes.arrayOf({}).isRequired,
+  fetchingUsers: PropTypes.func.isRequired,
+  columns: PropTypes.arrayOf({}).isRequired
 };
 
 export default Home;
