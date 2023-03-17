@@ -38,7 +38,10 @@ function UsersTable({rows}) {
         disableColumnMenu
         rows={rows}
         columns={columns}
-        pageSize={5}
+        initialState={{
+          pagination: { paginationModel: { pageSize: 5 } },
+        }}
+        pageSizeOptions={[]}
       />
     </div>
   );
