@@ -38,13 +38,11 @@ src/
   app/
   components/
   constants/
-  hooks/
   pages/
   routes/
   services/
   state/
   styles/
-  utils/
 ```
 
 `src/app`
@@ -58,10 +56,6 @@ Components to be share for the whole application.
 `src/constants`
 
 Constants to be share for the whole application.
-
-`src/hooks`
-
-Here you must write your custom hooks.
 
 `src/pages`
 
